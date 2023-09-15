@@ -7,7 +7,6 @@ import org.jsoup.select.Elements;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.security.Key;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +28,10 @@ public class Main {
 
             for (Element name : propName) {
                 Element parentDiv = name.parent();
-                String divText = parentDiv.text();
+                String divText = null;
+                if (parentDiv != null) {
+                    divText = parentDiv.text();
+                }
                 Matcher matcher = pattern.matcher(divText);
                 String matchedVal = "";
 
@@ -41,8 +43,10 @@ public class Main {
             }
         }
 
-        System.out.println(propMap);
+        writeToFile(propMap);
+    }
 
+    private static void writeToFile(HashMap<String, String> propMap) throws IOException {
         String fileName = "VehiclePropertyList.csv";
 
         try (FileWriter writer = new FileWriter(fileName)) {
