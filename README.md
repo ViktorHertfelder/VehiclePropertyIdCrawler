@@ -5,7 +5,7 @@ If there are any changes on said page, you just have to run the crawler and the 
 
 ## Mapping looks like this:
 
-ABS_ACTIVE,287310858
-...,...
-...,...
-...,...
+ABS_ACTIVE,287310858\n
+...,...\n
+...,...\n
+...,...\n
