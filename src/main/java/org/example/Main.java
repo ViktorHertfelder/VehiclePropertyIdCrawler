@@ -70,7 +70,7 @@ public class Main {
             Document document = Jsoup.parse(div);
             Elements propName = document.select("div[data-version-added] h3.api-name");
             for (Element name : propName) {
-                if (name.text().matches("^[A-Z_]+$")) {
+                if (name.text().matches("^[A-Z0-9_]+$")) {
                     Element parentDiv = name.parent();
 
                     String divText = null;
@@ -84,7 +84,7 @@ public class Main {
                     }
 
                     String matchedVal = "";
-                    if (matcher.find()) {
+                    if (matcher != null && matcher.find()) {
                         matchedVal = matcher.group(1);
                     }
 
